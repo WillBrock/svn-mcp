@@ -5,6 +5,7 @@ import { handleSvnStatus } from './svn-status.js';
 import { handleSvnLog } from './svn-log.js';
 import { handleSvnDiff } from './svn-diff.js';
 import { handleSvnBlame } from './svn-blame.js';
+import { handleSvnCat } from './svn-cat.js';
 
 export function registerTools(server: McpServer) {
   // svn_info - Get repository and working copy information
@@ -65,5 +66,18 @@ export function registerTools(server: McpServer) {
       end_line: z.number().optional().describe('End line number for output'),
     },
     async (input) => handleSvnBlame(input)
+  );
+
+  // svn_cat - Show file contents at a specific revision
+  server.tool(
+    'svn_cat',
+    'Show contents of a file at a specific revision. Useful for viewing historical versions of a file.',
+    {
+      path: z.string().describe('File path to show (required)'),
+      revision: z.string().optional().describe('Revision to show (e.g., "1000", "HEAD", "BASE"). Defaults to working copy version.'),
+      start_line: z.number().optional().describe('Start line number for output'),
+      end_line: z.number().optional().describe('End line number for output'),
+    },
+    async (input) => handleSvnCat(input)
   );
 }
