@@ -45,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/willbrock/svn-mcp.git"
+    "url": "https://github.com/WillBrock/svn-mcp"
   },
   "author": "Will Brock",
   "license": "MIT"
