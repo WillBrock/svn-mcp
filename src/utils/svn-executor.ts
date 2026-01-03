@@ -6,12 +6,15 @@ let cachedConfig: SvnConfig | null = null;
 export function getConfig(): SvnConfig {
   if (cachedConfig) return cachedConfig;
 
+  // Expand ~ to home directory since Node.js spawn() doesn't do shell expansion
+  const expandTilde = (path?: string) => path?.replace(/^~/, process.env.HOME || '');
+
   cachedConfig = {
     username: process.env.SVN_USERNAME,
     password: process.env.SVN_PASSWORD,
     repoUrl: process.env.SVN_REPO_URL,
     trunkPath: process.env.SVN_TRUNK_PATH,
-    localWorkingCopy: process.env.SVN_LOCAL_WORKING_COPY,
+    localWorkingCopy: expandTilde(process.env.SVN_LOCAL_WORKING_COPY),
   };
 
   return cachedConfig;
