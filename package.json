@@ -1,6 +1,6 @@
 {
   "name": "svn-mcp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MCP server providing SVN repository information for Claude Code and other AI assistants",
   "type": "module",
   "main": "dist/index.js",
