@@ -37,8 +37,8 @@ svn_info path="svn://server.com/repo/trunk"
 
 ```
 Path: .
-URL: svn://server.com/repo/branches/12.0/dev/FOCUS-12345
-Relative URL: ^/branches/12.0/dev/FOCUS-12345
+URL: svn://server.com/repo/branches/1.0/dev/JIRA-12345
+Relative URL: ^/branches/1.0/dev/JIRA-12345
 Repository Root: svn://server.com/repo
 Repository UUID: 12345678-1234-1234-1234-123456789abc
 Revision: 98765
@@ -48,7 +48,7 @@ Last Changed Rev: 98760
 Last Changed Date: Dec 15, 2024, 3:45 PM
 Working Copy Root Path: /Users/jsmith/projects/branch
 Branch Type: branch
-Branch Name: 12.0/dev/FOCUS-12345
+Branch Name: 1.0/dev/JIRA-12345
 ```
 
 ---
@@ -154,12 +154,12 @@ svn_log revision="98000:HEAD"
 ────────────────────────────────────────────────────────
 r98765 | jsmith | Dec 15, 2024, 3:45 PM
 
-FOCUS-12345: Fix database connection timeout issue
+JIRA-12345: Fix database connection timeout issue
 
 ────────────────────────────────────────────────────────
 r98760 | mjones | Dec 14, 2024, 11:30 AM
 
-FOCUS-12340: Add new student import feature
+JIRA-12340: Add new student import feature
 
 Changed paths:
   A src/Import/StudentImporter.php

@@ -55,7 +55,7 @@ Configure via environment variables in your MCP settings:
 | `SVN_USERNAME` | No | SVN authentication username |
 | `SVN_PASSWORD` | No | SVN authentication password |
 | `SVN_REPO_URL` | No | Base repository URL (svn://, https://, svn+ssh://) |
-| `SVN_TRUNK_PATH` | No | Path to trunk within repo (e.g., `trunk` or `branches/12.0/trunk`) |
+| `SVN_TRUNK_PATH` | No | Path to trunk within repo (e.g., `trunk` or `foobar/trunk`) |
 | `SVN_LOCAL_WORKING_COPY` | No | Local working copy path for file history without network |
 
 ### Example Configuration

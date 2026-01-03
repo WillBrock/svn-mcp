@@ -182,7 +182,7 @@ function parseBranchFromUrl(url: string): { branchType: 'trunk' | 'branch' | 'ta
   // .../trunk
   // .../branches/feature-name
   // .../branches/1.0/trunk
-  // .../branches/1.0/dev/FOCUS-12345
+  // .../branches/1.0/dev/JIRA-12345
   // .../tags/1.0.0
 
   const lowerUrl = url.toLowerCase();
@@ -200,7 +200,7 @@ function parseBranchFromUrl(url: string): { branchType: 'trunk' | 'branch' | 'ta
 
   // Check for branches
   const branchPatterns = [
-    // .../branches/X.X/dev/FOCUS-XXXXX
+    // .../branches/X.X/dev/JIRA-XXXXX
     /\/branches\/([^/]+\/dev\/[^/]+)\/?$/i,
     // .../branches/X.X/trunk
     /\/branches\/([^/]+\/trunk)\/?$/i,

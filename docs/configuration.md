@@ -18,7 +18,7 @@ The SVN MCP server is configured entirely through environment variables, passed 
 | Variable | Description | Example |
 |----------|-------------|---------|
 | `SVN_REPO_URL` | Base URL of your SVN repository | `svn://server.com/repo` |
-| `SVN_TRUNK_PATH` | Path to trunk within the repository | `trunk` or `branches/12.0/trunk` |
+| `SVN_TRUNK_PATH` | Path to trunk within the repository | `trunk` or `branches/1.0/trunk` |
 | `SVN_LOCAL_WORKING_COPY` | Path to local checkout for offline operations | `/home/user/project` |
 
 ### URL Protocol Support
@@ -80,7 +80,7 @@ For optimal performance with both local and remote access:
         "SVN_USERNAME": "jsmith",
         "SVN_PASSWORD": "secret123",
         "SVN_REPO_URL": "svn://svn.company.com/repos",
-        "SVN_TRUNK_PATH": "branches/12.0/trunk",
+        "SVN_TRUNK_PATH": "branches/1.0/trunk",
         "SVN_LOCAL_WORKING_COPY": "/Users/jsmith/projects/trunk"
       }
     }

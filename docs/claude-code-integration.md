@@ -78,10 +78,10 @@ Claude will use `svn_log` with the file path:
 Here are the recent commits for src/Database.php:
 
 r98765 | jsmith | Dec 15, 2024
-FOCUS-12345: Fix connection timeout
+JIRA-12345: Fix connection timeout
 
 r98700 | mjones | Dec 10, 2024
-FOCUS-12300: Add retry logic
+JIRA-12300: Add retry logic
 ```
 
 ### Understanding Code Authorship
@@ -103,7 +103,7 @@ Ask Claude:
 
 Claude will use `svn_info`:
 ```
-You're on branch: 12.0/dev/FOCUS-12345
+You're on branch: 1.0/dev/JIRA-12345
 Current revision: 98765
 Last commit by: jsmith on Dec 15, 2024
 ```
