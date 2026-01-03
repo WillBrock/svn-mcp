@@ -1,0 +1,50 @@
+{
+  "name": "svn-mcp",
+  "version": "1.0.0",
+  "description": "MCP server providing SVN repository information for Claude Code and other AI assistants",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "svn-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "svn",
+    "subversion",
+    "version-control",
+    "ai",
+    "llm"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "fast-xml-parser": "^4.3.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/willbrock/svn-mcp.git"
+  },
+  "author": "Will Brock",
+  "license": "MIT"
+}
