@@ -4,6 +4,13 @@ import { executeSvnCommand, getConfig } from './svn-executor.js';
 import { parseInfoXml } from './xml-parser.js';
 import { SvnInfoResult, SvnError, SVN_ERROR_CODES } from '../types/index.js';
 
+function isUrl(path: string): boolean {
+  return path.startsWith('svn://') ||
+         path.startsWith('http://') ||
+         path.startsWith('https://') ||
+         path.startsWith('svn+ssh://');
+}
+
 export interface WorkingCopyInfo {
   isWorkingCopy: boolean;
   rootPath: string | null;
@@ -105,7 +112,11 @@ export async function resolvePathForOperation(
   }
 
   // Fall back to network operation with repo URL
-  if (config.repoUrl) {
+  if (config.trunkPath && isUrl(config.trunkPath)) {
+    // SVN_TRUNK_PATH is a full URL, use it directly
+    const remotePath = filePath ? `${config.trunkPath}/${filePath}` : config.trunkPath;
+    return { path: remotePath, useCredentials: true };
+  } else if (config.repoUrl) {
     const remotePath = config.trunkPath
       ? `${config.repoUrl}/${config.trunkPath}/${filePath}`
       : `${config.repoUrl}/${filePath}`;
@@ -149,7 +160,15 @@ export async function getRepoInfo(path?: string): Promise<SvnInfoResult> {
   }
 
   // Try remote repo URL
-  if (config.repoUrl) {
+  if (config.trunkPath && isUrl(config.trunkPath)) {
+    // SVN_TRUNK_PATH is a full URL, use it directly
+    const output = await executeSvnCommand(
+      'info',
+      ['--xml', config.trunkPath],
+      { useCredentials: true }
+    );
+    return parseInfoXml(output);
+  } else if (config.repoUrl) {
     const repoPath = config.trunkPath
       ? `${config.repoUrl}/${config.trunkPath}`
       : config.repoUrl;

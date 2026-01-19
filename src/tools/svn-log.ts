@@ -31,6 +31,10 @@ export async function handleSvnLog(input: SvnLogInput): Promise<{ content: Array
       if (config.localWorkingCopy) {
         targetPath = config.localWorkingCopy;
         workingDir = config.localWorkingCopy;
+      } else if (config.trunkPath && isUrl(config.trunkPath)) {
+        // SVN_TRUNK_PATH is a full URL, use it directly
+        targetPath = config.trunkPath;
+        useCredentials = true;
       } else if (config.repoUrl) {
         targetPath = config.trunkPath
           ? `${config.repoUrl}/${config.trunkPath}`
@@ -120,4 +124,11 @@ function formatDate(isoDate: string): string {
   } catch {
     return isoDate;
   }
+}
+
+function isUrl(path: string): boolean {
+  return path.startsWith('svn://') ||
+         path.startsWith('http://') ||
+         path.startsWith('https://') ||
+         path.startsWith('svn+ssh://');
 }
